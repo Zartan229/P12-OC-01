@@ -1,0 +1,14 @@
+.iconContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    gap: 13px;
+    margin-top: -97px;
+}
+
+.icon{
+    width: 47px;
+    height: 47px;
+}

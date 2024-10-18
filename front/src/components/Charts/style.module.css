@@ -1,0 +1,22 @@
+.chartContainerMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  padding: 20px;
+  margin-left: 4%;
+  margin-top: 56px;
+}
+
+.barWeight:hover, .barCalories:hover {
+  opacity: 0.7;
+}
+
+.tooltip {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  display: none;
+}

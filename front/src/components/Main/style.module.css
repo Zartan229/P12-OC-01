@@ -1,0 +1,25 @@
+.cointainerMain{
+    position: absolute;
+    top: 64px;
+    left: 83px;
+}
+
+.containerTitle{
+    margin-left: 28%;
+    margin-top: 33px;
+    width: 100%;
+}
+
+.containerTitle > h2{
+    font-size: 32px;
+}
+
+.containerTitle > p{
+    margin-top: -11px;
+    font-size: 12px;
+}
+
+.cointainerSecondary{
+    display: flex;
+    align-items: center;
+}
