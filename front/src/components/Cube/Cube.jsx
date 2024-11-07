@@ -40,7 +40,7 @@ export default function SmallCube({ mock, userId }) {
       .attr("text-anchor", "start") // Alignement à gauche
       .style("font-size", "8px")
       .style("fill", "white")
-      .call((text) => text.append("tspan").text("Durée moyenne")) // Premier ligne
+      .call((text) => text.append("tspan").text("Durée moyenne"))
       .call((text) =>
         text.append("tspan").attr("x", 5).attr("dy", "1em").text("de session")
       ); // Deuxième ligne
@@ -80,7 +80,7 @@ export default function SmallCube({ mock, userId }) {
       .enter()
       .append("text")
       .attr("class", "day-label")
-      .attr("x", (d) => xScale(d.day) + xScale.bandwidth() / 2) // Centrer le texte sous les bandes
+      .attr("x", (d) => xScale(d.day) + xScale.bandwidth() / 2) // Centrer le texte
       .attr("y", height + 10) // Positionner en dessous du graphique
       .attr("text-anchor", "middle") // Alignement au centre
       .style("font-size", "8px")
@@ -105,8 +105,8 @@ export default function SmallCube({ mock, userId }) {
       .attr("y", -5) // Positionner légèrement au-dessus du graphique
       .attr("height", height + 30) // Hauteur de l'overlay
       .attr("fill", "black")
-      .attr("opacity", 0) // Commencer caché
-      .style("pointer-events", "none"); // Assurer qu'il ne bloque pas les interactions
+      .attr("opacity", 0)
+      .style("pointer-events", "none"); // ne bloque pas les interactions
 
     // Ajouter des cercles pour chaque point (visible uniquement sur clic)
     svg

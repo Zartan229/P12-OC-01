@@ -79,13 +79,13 @@ export default function Candle({ mock, userId }) {
     const yScaleLeft = d3
       .scaleLinear()
       .domain([minWeight, maxWeight]) // Définir le domaine pour le poids
-      .range([height, 0]); // Plage de la hauteur (inverse pour SVG)
+      .range([height, 0]); // Plage de la hauteur
 
     // Échelle Y pour les calories
     const yScaleRight = d3
       .scaleLinear()
       .domain([0, d3.max(data, (d) => d.calories) + 100]) // Définir le domaine pour les calories
-      .range([height, 0]); // Plage de la hauteur (inverse pour SVG)
+      .range([height, 0]); // Plage de la hauteur
 
     // Couleur pour les barres de poids et de calories
     const colorScaleWeight = "black"; // Couleur pour les barres de poids
@@ -98,7 +98,7 @@ export default function Candle({ mock, userId }) {
       .call(d3.axisBottom(xScale).tickFormat((d) => d.slice(-2))); // Appel de l'axe X avec formatage
 
     // Supprimer la ligne noire de l'axe et les marques de graduation de l'axe inférieur
-    bottomAxis.select(".domain").remove(); // Supprimer la ligne de l'axe (chemin)
+    bottomAxis.select(".domain").remove(); // Supprimer la ligne de l'axe
     bottomAxis.selectAll("line").remove(); // Supprimer les lignes de graduation
 
     // Axe pour le poids sur le côté droit (position ajustée)
@@ -113,14 +113,14 @@ export default function Candle({ mock, userId }) {
       ); // Formatage des ticks
 
     // Supprimer la ligne noire et les marques de graduation de l'axe droit
-    rightAxis.select(".domain").remove(); // Supprimer la ligne de l'axe (chemin)
+    rightAxis.select(".domain").remove(); // Supprimer la ligne de l'axe
     rightAxis.selectAll("line").remove(); // Supprimer les lignes de graduation
 
     // Ajouter des barres pour le poids avec des sommets arrondis et un bas plat
     svg
       .selectAll(".barWeight")
       .data(data)
-      .join("rect") // Joindre les données aux éléments <rect>
+      .join("rect") // Joindre les données aux éléments
       .attr("class", "barWeight") // Ajouter une classe pour le style
       .attr("x", (d) => xScale(d.day) + (xScale.bandwidth() - 7) / 2) // Centrer la barre
       .attr("y", (d) => yScaleLeft(d.kilogram)) // Positionner la barre selon le poids
@@ -134,7 +134,7 @@ export default function Candle({ mock, userId }) {
     svg
       .selectAll(".barCalories")
       .data(data)
-      .join("rect") // Joindre les données aux éléments <rect>
+      .join("rect") // Joindre les données aux éléments
       .attr("class", "barCalories") // Ajouter une classe pour le style
       .attr("x", (d) => xScale(d.day) + (xScale.bandwidth() - 7) / 2 + 10) // Positionner à côté de la barre de poids
       .attr("y", (d) => yScaleRight(d.calories)) // Positionner la barre selon les calories
