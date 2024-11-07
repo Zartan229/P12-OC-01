@@ -1,0 +1,39 @@
+.mainDataContainer{
+    display: flex;
+    position: absolute;
+    right: -219px;
+    top: 169px;
+}
+
+.cardFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+}
+
+.keyDataItem{
+    background-color: rgb(251, 251, 251, 1);
+    display: flex;
+    padding: 22px;
+}
+
+.keyDataImage{
+    width: 40px;
+    height: 40px;
+}
+
+.keyDataDiv{
+    margin-left: 13px;
+}
+
+.keyDataBoldText{
+    margin: unset;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.keyDataText{
+    margin: unset;
+    color: gray;
+    font-size: 14px;
+}

@@ -5,7 +5,7 @@
 }
 
 .containerTitle{
-    margin-left: 28%;
+    margin-left: 12%;
     margin-top: 33px;
     width: 100%;
 }
@@ -21,5 +21,6 @@
 
 .cointainerSecondary{
     display: flex;
+    padding-top: 26px;
     align-items: center;
 }

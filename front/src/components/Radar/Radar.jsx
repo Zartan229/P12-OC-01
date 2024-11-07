@@ -2,18 +2,18 @@ import classes from "./style.module.css";
 import React, { useRef, useEffect } from "react"; 
 import * as d3 from "d3"; 
 
-export default function RadarChart({ mock }) {
-  const ref = useRef(); 
+export default function RadarChart({ mock, userId }) {
+  const ref = useRef();
 
   const width = 182;
   const height = 186;
-  const radius = Math.min(width, height) / 2.5; // Calculer du rayon
+  const radius = Math.min(width, height) / 2.5;
 
-  // Extraction des données de USER_PERFORMANCE
-  const userPerformance = mock.USER_PERFORMANCE[0];
+  const userPerformance = mock.USER_PERFORMANCE.find(user => user.userId === userId);
+
   const data = userPerformance.data.map((d) => ({
-    name: userPerformance.kind[d.kind], 
-    value: d.value, 
+    name: userPerformance.kind[d.kind],
+    value: d.value,
   }));
 
   useEffect(() => {

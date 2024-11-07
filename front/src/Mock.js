@@ -1,20 +1,32 @@
-/*
-
-
 const USER_MAIN_DATA = [
     {
         id: 12,
         userInfos: {
-            firstName: 'Karl_Mock',
-            lastName: 'Dovineau_Mock',
+            firstName: 'Karl_MOCK',
+            lastName: 'Dovineau_MOCK',
             age: 31,
         },
-        todayScore: 0.12,
+        score: 0.12,
         keyData: {
             calorieCount: 1930,
             proteinCount: 155,
             carbohydrateCount: 290,
             lipidCount: 50
+        }
+    },
+    {
+        id: 18,
+        userInfos: {
+            firstName: 'Cecilia_MOCK',
+            lastName: 'Ratorez_MOCK',
+            age: 34,
+        },
+        score: 0.3,
+        keyData: {
+            calorieCount: 2500,
+            proteinCount: 90,
+            carbohydrateCount: 150,
+            lipidCount: 120
         }
     }
 ]
@@ -59,117 +71,7 @@ const USER_ACTIVITY = [
                 calories: 390
             }
         ]
-    }
-]
-
-
-const USER_AVERAGE_SESSIONS = [
-    {
-        userId: 12,
-        sessions: [
-            {
-                day: 1,
-                sessionLength: 30
-            },
-            {
-                day: 2,
-                sessionLength: 23
-            },
-            {
-                day: 3,
-                sessionLength: 45
-            },
-            {
-                day: 4,
-                sessionLength: 50
-            },
-            {
-                day: 5,
-                sessionLength: 0
-            },
-            {
-                day: 6,
-                sessionLength: 0
-            },
-            {
-                day: 7,
-                sessionLength: 60
-            }
-        ]
-    }
-]
-
-
-const USER_PERFORMANCE = [
-    {
-        userId: 12,
-        kind: {
-            1: 'cardio',
-            2: 'energy',
-            3: 'endurance',
-            4: 'strength',
-            5: 'speed',
-            6: 'intensity'
-        },
-        data: [
-            {
-                value: 80,
-                kind: 1
-            },
-            {
-                value: 120,
-                kind: 2
-            },
-            {
-                value: 140,
-                kind: 3
-            },
-            {
-                value: 50,
-                kind: 4
-            },
-            {
-                value: 200,
-                kind: 5
-            },
-            {
-                value: 90,
-                kind: 6
-            }
-        ]
-    }
-
-]
-
-
-
-module.exports = {
-    USER_MAIN_DATA,
-    USER_ACTIVITY,
-    USER_AVERAGE_SESSIONS,
-    USER_PERFORMANCE
-}
-*/
-
-const USER_MAIN_DATA = [
-    {
-        id: 18,
-        userInfos: {
-            firstName: 'Cecilia',
-            lastName: 'Ratorez',
-            age: 34,
-        },
-        score: 0.3,
-        keyData: {
-            calorieCount: 2500,
-            proteinCount: 90,
-            carbohydrateCount: 150,
-            lipidCount: 120
-        }
-    }
-]
-
-const USER_ACTIVITY = [
+    },
     {
         userId: 18,
         sessions: [
@@ -215,6 +117,39 @@ const USER_ACTIVITY = [
 
 const USER_AVERAGE_SESSIONS = [
     {
+        userId: 12,
+        sessions: [
+            {
+                day: 1,
+                sessionLength: 30
+            },
+            {
+                day: 2,
+                sessionLength: 23
+            },
+            {
+                day: 3,
+                sessionLength: 45
+            },
+            {
+                day: 4,
+                sessionLength: 50
+            },
+            {
+                day: 5,
+                sessionLength: 0
+            },
+            {
+                day: 6,
+                sessionLength: 0
+            },
+            {
+                day: 7,
+                sessionLength: 60
+            }
+        ]
+    },
+    {
         userId: 18,
         sessions: [
             {
@@ -251,6 +186,43 @@ const USER_AVERAGE_SESSIONS = [
 
 
 const USER_PERFORMANCE = [
+    {
+        userId: 12,
+        kind: {
+            1: 'cardio',
+            2: 'energy',
+            3: 'endurance',
+            4: 'strength',
+            5: 'speed',
+            6: 'intensity'
+        },
+        data: [
+            {
+                value: 80,
+                kind: 1
+            },
+            {
+                value: 120,
+                kind: 2
+            },
+            {
+                value: 140,
+                kind: 3
+            },
+            {
+                value: 50,
+                kind: 4
+            },
+            {
+                value: 200,
+                kind: 5
+            },
+            {
+                value: 90,
+                kind: 6
+            }
+        ]
+    },
     {
         userId: 18,
         kind: {
