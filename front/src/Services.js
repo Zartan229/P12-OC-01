@@ -1,45 +1,79 @@
-//Par défaut passe par le back-end, si le back-end pas lancer, envoyer sur les Mocks
-const { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } = require('./Mock.js');
+const API_BASE_URL = 'http://localhost:3000';
 
-class User {
-  constructor({ id, userInfos, score, keyData }) {
-    this.id = id;
-    this.userInfos = userInfos;
-    this.score = score;
-    this.keyData = keyData;
-  }
+
+function fetchUser(userId) {
+    return fetch(`${API_BASE_URL}/user/${userId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User Data:', data); 
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching user:', error);
+        });
 }
 
-class Activity {
-  constructor({ userId, sessions }) {
-    this.userId = userId;
-    this.sessions = sessions;
-  }
+
+function fetchUserActivity(userId) {
+    return fetch(`${API_BASE_URL}/user/${userId}/activity`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User Activity:', data); 
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching user activity:', error);
+        });
 }
 
-class AverageSession {
-  constructor({ userId, sessions }) {
-    this.userId = userId;
-    this.sessions = sessions;
-  }
+function fetchUserAverageSessions(userId) {
+    return fetch(`${API_BASE_URL}/user/${userId}/average-sessions`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User Average Sessions:', data);  
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching user average sessions:', error);
+        });
 }
 
-class Performance {
-  constructor({ userId, kind, data }) {
-    this.userId = userId;
-    this.kind = kind;
-    this.data = data;
-  }
+
+function fetchUserPerformance(userId) {
+    return fetch(`${API_BASE_URL}/user/${userId}/performance`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('User Performance:', data);  
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching user performance:', error);
+        });
 }
 
-const userInstances = USER_MAIN_DATA.map(user => new User(user));
-const activityInstances = USER_ACTIVITY.map(activity => new Activity(activity));
-const averageSessionInstances = USER_AVERAGE_SESSIONS.map(averageSession => new AverageSession(averageSession));
-const performanceInstances = USER_PERFORMANCE.map(performance => new Performance(performance));
+const userId = 12;
 
-module.exports = {
-  userInstances,
-  activityInstances,
-  averageSessionInstances,
-  performanceInstances
-};
+fetchUser(userId);
+fetchUserActivity(userId);
+fetchUserAverageSessions(userId); 
+fetchUserPerformance(userId);
