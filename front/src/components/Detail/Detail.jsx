@@ -18,10 +18,9 @@ const keyDataLabels = {
   lipidCount: "Lipides",
 };
 
-export default function Detail({ mock, userId }) {
-  const userData = mock.USER_MAIN_DATA.find(user => user.id === userId);
+export default function Detail({currentUser}) {
   
-  const keyData = userData.keyData;
+  const keyData = currentUser.keyData;
 
   return (
     <section className={classes.mainDataContainer}>
@@ -37,7 +36,7 @@ export default function Detail({ mock, userId }) {
               <div className={classes.keyDataDiv}>
                 <p className={classes.keyDataBoldText}>
                   {key === "calorieCount"
-                    ? `${Number(value).toLocaleString("en-US")} Kcal`
+                    ? `${Number(value).toLocaleString("en-US")} Kcal` //version ricain ajoute la virgule
                     : `${value} g`}
                 </p>
                 <p className={classes.keyDataText}>{keyDataLabels[key]}</p>

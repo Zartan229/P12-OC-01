@@ -1,26 +1,65 @@
 import { useState, useEffect } from "react";
 import classes from "./style.module.css";
-import mock from '../../Mock.js';
-import Candle from '../Charts/Candle.jsx';
-import SmallCube from '../Cube/Cube.jsx';
-import Radar from '../Radar/Radar.jsx';
+import Candle from "../Charts/Candle.jsx";
+import SmallCube from "../Cube/Cube.jsx";
+import Radar from "../Radar/Radar.jsx";
 import CircularProgress from "../CircularProgress/CircularProgress.jsx";
-import Detail from '../Detail/Detail.jsx';
-
-console.log(mock);
+import Detail from "../Detail/Detail.jsx";
+import {
+  fetchUser,
+  fetchUserActivity,
+  fetchUserAverageSessions,
+  fetchUserPerformance,
+} from "../../Services.js";
 
 export default function Main() {
-  const [currentUserIndex, setCurrentUserIndex] = useState(0);
-  const [currentUser, setCurrentUser] = useState(mock.USER_MAIN_DATA[0]);
+  const [currentUserId, setCurrentUserId] = useState(12);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userActivity, setUserActivity] = useState(null);
+  const [userAverageSessions, setUserAverageSessions] = useState(null);
+  const [userPerformance, setUserPerformance] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const switchUser = () => {
-    const newIndex = currentUserIndex === 0 ? 1 : 0;
-    setCurrentUserIndex(newIndex);
+    const newId = currentUserId === 12 ? 18 : 12;
+    setCurrentUserId(newId);
   };
 
   useEffect(() => {
-    setCurrentUser(mock.USER_MAIN_DATA[currentUserIndex]);
-  }, [currentUserIndex]);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [userData, activityData, avgSessionsData, performanceData] =
+          await Promise.all([
+            fetchUser(currentUserId),
+            fetchUserActivity(currentUserId),
+            fetchUserAverageSessions(currentUserId),
+            fetchUserPerformance(currentUserId),
+          ]);
+        //
+        //   console.log(userData);
+        //   console.log(activityData);
+        //   console.log(avgSessionsData);
+        //   console.log(performanceData);
+
+        // setData pour les useState
+        setCurrentUser(userData);
+        setUserActivity(activityData);
+        setUserAverageSessions(avgSessionsData);
+        setUserPerformance(performanceData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [currentUserId]);
+
+  if (loading) {
+    return <div>Loading...</div>; // pour éviter les erreurs lors du premier chargement
+  }
 
   return (
     <section className={classes.cointainerMain}>
@@ -28,16 +67,16 @@ export default function Main() {
         <h2>Bonjour {currentUser.userInfos.firstName}</h2>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
-      <div onClick={switchUser} style={{ cursor: 'pointer', color: 'blue' }}>
+      <div onClick={switchUser} style={{ cursor: "pointer", color: "blue" }}>
         CLICK HERE TO SWITCH
       </div>
-      <Candle mock={mock} userId={currentUser.id} />
+      <Candle userActivity={userActivity} />
       <div className={classes.cointainerSecondary}>
-        <SmallCube mock={mock} userId={currentUser.id} />
-        <Radar mock={mock} userId={currentUser.id} />
-        <CircularProgress mock={mock} userId={currentUser.id} />
+        <SmallCube userAverageSessions={userAverageSessions} />
+        <Radar userPerformance={userPerformance} />
+        <CircularProgress currentUser={currentUser} />
       </div>
-      <Detail mock={mock} userId={currentUser.id} />
+      <Detail currentUser={currentUser} />
     </section>
   );
 }

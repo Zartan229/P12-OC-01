@@ -2,16 +2,14 @@ import classes from "./style.module.css";
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-export default function Candle({ mock, userId }) {
+export default function Candle({userActivity}) {
   const ref = useRef();
 
   // Dimension de la chart
   const margin = { top: 30, right: 50, bottom: 20, left: 40 };
   const width = 520;
   const height = 135;
-
-  const userActivity = mock.USER_ACTIVITY.find(user => user.userId === userId);
-
+  // Utilise userActivity
   const data = userActivity.sessions.map((session) => ({
     day: session.day,
     kilogram: session.kilogram,
@@ -101,7 +99,7 @@ export default function Candle({ mock, userId }) {
     bottomAxis.select(".domain").remove(); // Supprimer la ligne de l'axe
     bottomAxis.selectAll("line").remove(); // Supprimer les lignes de graduation
 
-    // Axe pour le poids sur le côté droit (position ajustée)
+    // Axe pour le poids sur le côté droit
     const rightAxis = svg
       .append("g")
       .attr("transform", `translate(${width - 10}, 0)`) // Déplacer l'axe de poids plus près des barres
@@ -130,7 +128,7 @@ export default function Candle({ mock, userId }) {
       .attr("rx", 3) // Ajouter un rayon horizontal pour le sommet arrondi
       .attr("ry", 3); // Ajouter un rayon vertical pour le sommet arrondi
 
-    // Ajouter des barres pour les calories avec des sommets arrondis et un bas plat (sans axe)
+    // Ajouter des barres pour les calories avec des sommets arrondis et un bas plat
     svg
       .selectAll(".barCalories")
       .data(data)

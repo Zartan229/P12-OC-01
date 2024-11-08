@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import classes from "./style.module.css";
 
-export default function CircularProgress({ mock, userId }) {
+export default function CircularProgress({currentUser}) {
   const ref = useRef();
 
-  const userScore = mock.USER_MAIN_DATA.find(user => user.id === userId)?.score;
+  const userScore = currentUser.score;
   const percentage = userScore * 100;
 
   useEffect(() => {

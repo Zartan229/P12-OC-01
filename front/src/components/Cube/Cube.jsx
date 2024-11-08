@@ -2,12 +2,9 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import classes from "./style.module.css";
 
-export default function SmallCube({ mock, userId }) {
+export default function SmallCube({userAverageSessions }) {
   const ref = useRef();
-
-
-  const userSessions = mock.USER_AVERAGE_SESSIONS.find(user => user.userId === userId)?.sessions;
-
+  const userSessions = userAverageSessions.sessions;
   // Mapping des données de session au format attendu par D3
   const dayMapping = ["L", "M", " M", "J", "V", "S", "D"];
   const data = userSessions.map((session) => ({
