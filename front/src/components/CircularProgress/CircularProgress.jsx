@@ -6,11 +6,11 @@ export default function CircularProgress({currentUser}) {
   const ref = useRef();
 
   const userScore = currentUser.score;
-  const percentage = userScore * 100;
+  const percentage = userScore * 100; //Calcul pourcent
 
   useEffect(() => {
 
-    d3.select(ref.current).selectAll("*").remove();
+    d3.select(ref.current).selectAll("*").remove(); //Suppression erreur cache
 
 
     const width = 182;

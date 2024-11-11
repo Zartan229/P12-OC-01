@@ -47,13 +47,13 @@ export default function RadarChart({userPerformance}) {
       const points = data.map((d, i) => {
         const angle = i * angleSlice;
         const r = rScale(level);
-        return [r * Math.cos(angle - Math.PI / 2), r * Math.sin(angle - Math.PI / 2)];
+        return [r * Math.cos(angle - Math.PI / 2), r * Math.sin(angle - Math.PI / 2)]; //Angle du radius
       });
       return points;
     };
 
     const levels = [0.1, 0.3, 0.5, 0.7, 0.9]; // Niveaux des polygones concentriques
-    levels.forEach((level) => {
+    levels.forEach((level) => { //Dessine chaque niveau
       const polygonPoints = drawPolygon(d3.max(data, (d) => d.value) * level);
       svg.append("polygon")
         .attr("points", polygonPoints.map((d) => d.join(",")).join(" ")) 
