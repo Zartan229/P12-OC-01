@@ -52,7 +52,7 @@ export default function Main() {
   }, [currentUserId]);
 
   if (loading) {
-    return <div>Loading...</div>; // pour éviter les erreurs lors du premier chargement
+    return <></>// pour éviter les erreurs lors du premier chargement
   }
 
   return (

@@ -1,3 +1,6 @@
+
+//Constructeur pour générer les différente donnée fournis aux Charte.
+//Classe User par soucis de maintenabilité et utilisation
 class User {
   constructor({ id, userInfos, score, keyData }) {
     this.id = id;
@@ -28,7 +31,7 @@ class Performance {
     this.data = data;
   }
 }
-
+//Exporte les classes pour les utiliser dans Services.js
 module.exports = {
   User,
   Activity,

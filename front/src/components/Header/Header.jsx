@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header>
       <h1 className={classes.title}>
-        <a /*className={classes.}*/>
+        <a>
           <img className={classes.logo} src={logo} al="logo" />
         </a>
       </h1>
