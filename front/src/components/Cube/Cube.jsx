@@ -116,13 +116,7 @@ export default function SmallCube({userAverageSessions }) {
       .attr("cy", (d) => yScale(d.minutes)) // Positionner selon les minutes
       .attr("r", 2) // Rayon des cercles
       .attr("fill", "transparent") // Invisible au départ
-      .on("click", (event, d) => {
-        // Basculer la visibilité des points au clic
-        const isVisible = d3.select(event.currentTarget).attr("fill") === "white";
-        d3.select(event.currentTarget).attr("fill", isVisible ? "transparent" : "white"); // Alterne entre blanc et transparent
-
-        // Afficher ou masquer le tooltip en fonction du clic
-        if (!isVisible) {
+      .on("mouseover", (event, d) => { // survol pas clique
           tooltip
             .style("display", "block") // Afficher le tooltip
             .html(`Minutes passées : ${d.minutes}`) // Contenu du tooltip
@@ -135,10 +129,11 @@ export default function SmallCube({userAverageSessions }) {
             .attr("x", mouseX) // Position de départ de l'overlay
             .attr("width", width + 5 - mouseX) // Couverture de la souris au bord droit
             .attr("opacity", 0.5); // Opacité de l'overlay
-        } else {
+          })
+          .on("mouseout", () => { // Changement logique
           tooltip.style("display", "none"); // Masquer le tooltip
           overlay.attr("opacity", 0); // Masquer l'overlay
-        }
+        
       });
   }, [data]);
 

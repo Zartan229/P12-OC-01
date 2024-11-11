@@ -2,12 +2,24 @@
     position: absolute;
     top: 64px;
     left: 83px;
+    width: 61.8%;
 }
 
 .containerTitle{
     margin-left: 12%;
     margin-top: 33px;
-    width: 100%;
+    width: 88%;
+}
+.containerTitle > h2{
+    display: flex;
+    align-items: center;
+    margin-left: 10p;
+    gap: 10px;
+}
+
+.containerTitle > h2 > p{
+    color: red;
+    margin: unset;
 }
 
 .containerTitle > h2{
@@ -23,4 +35,7 @@
     display: flex;
     padding-top: 26px;
     align-items: center;
+    gap: 4%;
+    margin-left: 12%;
+    justify-content: space-evenly;
 }

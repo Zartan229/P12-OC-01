@@ -5,7 +5,8 @@
   background: rgba(251, 251, 251, 1);
   padding: 20px;
   margin-left: 4%;
-  margin-top: 56px;
+  margin-top: 24px;
+  width: 95%;
 }
 
 .barWeight:hover, .barCalories:hover {

@@ -36,12 +36,6 @@ export default function Main() {
             fetchUserAverageSessions(currentUserId),
             fetchUserPerformance(currentUserId),
           ]);
-        //
-        //   console.log(userData);
-        //   console.log(activityData);
-        //   console.log(avgSessionsData);
-        //   console.log(performanceData);
-
         // setData pour les useState
         setCurrentUser(userData);
         setUserActivity(activityData);
@@ -64,12 +58,13 @@ export default function Main() {
   return (
     <section className={classes.cointainerMain}>
       <div className={classes.containerTitle}>
-        <h2>Bonjour {currentUser.userInfos.firstName}</h2>
+        <h2>Bonjour <p>{currentUser.userInfos.firstName}</p></h2>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        <button onClick={switchUser} style={{ cursor: "pointer"}}>
+        Cliquez ici pour changer d'utilisateur
+      </button>
       </div>
-      <div onClick={switchUser} style={{ cursor: "pointer", color: "blue" }}>
-        CLICK HERE TO SWITCH
-      </div>
+
       <Candle userActivity={userActivity} />
       <div className={classes.cointainerSecondary}>
         <SmallCube userAverageSessions={userAverageSessions} />
