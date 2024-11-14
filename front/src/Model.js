@@ -2,10 +2,10 @@
 //Constructeur pour générer les différente donnée fournis aux Charte.
 //Classe User par soucis de maintenabilité et utilisation
 class User {
-  constructor({ id, userInfos, score, keyData }) {
+  constructor({ id, userInfos, score, todayScore, keyData }) {
     this.id = id;
     this.userInfos = userInfos;
-    this.score = score;
+    this.score = score ? score : todayScore;
     this.keyData = keyData;
   }
 }
